@@ -1,0 +1,7 @@
+
+    {
+      "challenge_id" : "single-source-augmentation",
+      "gpu": false, 
+      "authors" : ["rosarubus72"],
+      "description" : "Single-source Augmentation Agent",
+    }
