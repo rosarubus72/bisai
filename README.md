@@ -168,5 +168,3 @@ python app.py
 ```
 ## Acknowledgements
 Thanks to the code of [LAVIS](https://github.com/salesforce/LAVIS/tree/main) and data of [Encyclopedic-VQA](https://github.com/google-research/google-research/tree/master/encyclopedic_vqa) and [InfoSeek](https://github.com/open-vision-language/infoseek).
-
-
