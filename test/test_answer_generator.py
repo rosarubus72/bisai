@@ -48,6 +48,7 @@ if __name__ == "__main__":
     parser = ArgumentParser()
     parser.add_argument("--test_file", type=str)
     parser.add_argument("--retrieval_results", type=str)
+    parser.add_argument("--retrieval_results_file", type=str)
     parser.add_argument("--answer_generator", type=str)
     parser.add_argument("--llm_checkpoint", type=str)
     parser.add_argument("--output_file", type=str, default="answer.json")
@@ -55,7 +56,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     test_file = args.test_file
     retrieval_results = args.retrieval_results
-    vqa_results = args.vqa_results
+    #vqa_results = args.vqa_results
     output_file = args.output_file
     if args.answer_generator.lower() == "mistral":
         answer_generator = MistralAnswerGenerator(model_path=args.llm_checkpoint,device="cuda")
