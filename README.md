@@ -1,4 +1,4 @@
-# EchoSight: Advancing Visual-Language Models with Wiki Knowledge
+# EchoSight: Advancing Visual-Language Models with Wiki Knowledge (EMNLP 2024 Findings)
 This is the official PyTorch implementation of EchoSight: Advancing Visual-Language Models with Wiki Knowledge.
 
 [[Project Page]](https://go2heart.github.io/echosight) [[Paper]](https://arxiv.org/abs/2407.12735)
@@ -28,16 +28,16 @@ pip install -r requirements.txt
 We provide the knowledge bases used in EchoSight. The knowledge base file is the same format as the Encyclopedic-VQA dataset. Apart from the original 2M knowledge base for Encyclopedic-VQA, we also provide a 100K knowledge base for InfoSeek, which is a filtered subset of the 2M knowledge base. The knowledge base files can be downloaded from the following links:
 ### Enclyclopedic-VQA
 - [Encylopedic-VQA's 2M Knowledge Base](https://storage.googleapis.com/encyclopedic-vqa/encyclopedic_kb_wiki.zip)
-- [Enclopedic-VQA KB Images Faiss Index](https://drive.google.com/file/d/1cQYul-my2FtqfCND2FeqgF9TCMU3u5xz/view?usp=drive_link)
+- [Enclopedic-VQA KB Images Faiss Index](https://drive.google.com/file/d/1BMaOFq1TVfLn7-gdMhoVkd9w_9wQzY7q/view?usp=drive_link)
 ### Infoseek
 - [Our InfoSeek's 100K Knowledge Base ](https://drive.google.com/file/d/1cIbKtYryD7XBAw0tjrrCvMCJC2rIzLM5/view?usp=drive_link)
 - [InfoSeek KB Images Faiss Index](https://drive.google.com/file/d/1cDuL45c1iYwB0_BSlTmrMzbEE8ik2cVJ/view?usp=drive_link)
 
 ## VQA Questions
 ### Encyclopedic VQA
-The VQA questions can be downloaded in .csv format here(Provided by Encyclopedic-VQA):
+The VQA questions can be downloaded in .csv format here(the val and test set is provided by Encyclopedic-VQA, while the training is our cleaned version due to some missings in the repackaged image pixels):
 
-*   [train.csv](https://storage.googleapis.com/encyclopedic-vqa/train.csv)
+*   [train.csv](https://drive.google.com/file/d/13BZZAserLlqKT_RHq4sX5NAIu7Ii77eE/view?usp=drive_link)
 *   [val.csv](https://storage.googleapis.com/encyclopedic-vqa/val.csv)
 *   [test.csv](https://storage.googleapis.com/encyclopedic-vqa/test.csv)
 
@@ -48,7 +48,7 @@ To download the images in Encyclopedic-VQA:
 - [Google Landmarks Dataset V2](https://github.com/cvdfoundation/google-landmark)
 
 ### InfoSeek
-The VQA questions of InfoSeek are transformed to E-VQA format from the original InfoSeek dataset. Due to the The questions can be downloaded in .csv format here:
+The VQA questions of InfoSeek are transformed to E-VQA format from the original InfoSeek dataset. The questions can be downloaded in .csv format here:
 * [train.csv](https://drive.google.com/file/d/1cQiQmdFq8_8gsaZPsmzKzIjZhdcd_kxP/view?usp=drive_link)
 * [test.csv](https://drive.google.com/file/d/1cSG_dVuao9lKZy8vaUDWEo7mIHowjUeE/view?usp=drive_link)
 
@@ -141,7 +141,7 @@ The test_vqa.sh script uses the following parameters for inference:
 
 --`answer_generator`: Name of the answer generator model to be used. Choose from [Mistral, LLaMA3, GPT4, PaLM].
 
---`llm_checkpoint`: Path to the Mistral or LLaMA3 checkpoint file. If using GPT4 or PaLM, this parameter is not needed. Instead, change api_key in model/anwser_generator.py.
+--`llm_checkpoint`: Path to the [Mistral](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2) or [LLaMA3](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct) checkpoint file. If using GPT4 or PaLM, this parameter is not needed. Instead, change api_key in model/anwser_generator.py.
 
 --`output_file`: Path to the output file. Default is ./answer.json.
 ## Demo
@@ -156,14 +156,21 @@ python app.py
 
 ## Citation
 ```
-@misc{yan2024echosightadvancingvisuallanguagemodels,
-      title={EchoSight: Advancing Visual-Language Models with Wiki Knowledge}, 
-      author={Yibin Yan and Weidi Xie},
-      year={2024},
-      eprint={2407.12735},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2407.12735}, 
+@inproceedings{yan-xie-2024-echosight,
+    title = "{E}cho{S}ight: Advancing Visual-Language Models with {W}iki Knowledge",
+    author = "Yan, Yibin  and
+      Xie, Weidi",
+    editor = "Al-Onaizan, Yaser  and
+      Bansal, Mohit  and
+      Chen, Yun-Nung",
+    booktitle = "Findings of the Association for Computational Linguistics: EMNLP 2024",
+    month = nov,
+    year = "2024",
+    address = "Miami, Florida, USA",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2024.findings-emnlp.83",
+    pages = "1538--1551",
+    abstract = "Knowledge-based Visual Question Answering (KVQA) tasks require answering questions about images using extensive background knowledge. Despite significant advancements, generative models often struggle with these tasks due to the limited integration of external knowledge. In this paper, we introduce **EchoSight**, a novel multimodal Retrieval-Augmented Generation (RAG) framework that enables large language models (LLMs) to answer visual questions requiring fine-grained encyclopedic knowledge. To strive for high-performing retrieval, EchoSight first searches wiki articles by using visual-only information, subsequently, these candidate articles are further reranked according to their relevance to the combined text-image query. This approach significantly improves the integration of multimodal knowledge, leading to enhanced retrieval outcomes and more accurate VQA responses. Our experimental results on the E-VQA and InfoSeek datasets demonstrate that EchoSight establishes new state-of-the-art results in knowledge-based VQA, achieving an accuracy of 41.8{\%} on E-VQA and 31.3{\%} on InfoSeek.",
 }
 ```
 ## Acknowledgements
